@@ -14,47 +14,63 @@
 
 ## 🎨 1. User Interface & Experience (UI/UX)
 
-### Color Theme
-The application features a localized, thematic color palette:
-* **Primary Color:** Bright cyan (representing the Aegean beach water).
-* **Accent/Action Color:** Orange-yellow (representing the dry bushes of the Aegean Islands).
+### Color Theme: "Deep Aegean Night Mode"
+The application features a localized, eye-friendly dark theme designed for heavy data reading and research:
+* **Main Background:** Deep Ocean Teal (a very dark, muted blue-green).
+* **Card/Box Backgrounds:** Slate Teal (slightly lighter than the background to create depth).
+* **Text (Primary):** Soft Sand/Off-Gray (high contrast without the harsh glare of pure white).
+* **Text (Secondary/Labels):** Muted Ash (a grayish-teal that visually recedes).
+* **Accent/Action Color:** Muted Ochre/Gold (a soft, earthy highlight for buttons, active tabs, and sliders).
 
 ### Landing Page Layout
 The home page features a horizontal split background:
 * **Top Half (Image Background):** * Transparent hero navigation.
-    * Top-Left: Cyan AndrosDB logo.
-    * Top-Right: Orange-yellow "Admin" login button.
-    * Center: Logo + "Explore the Families of Andros over the Years".
-    * Search Bar: Centered, white input field with an orange-yellow search button.
-* **Bottom Half (Cyan Background):**
+    * Top-Left: Muted AndrosDB logo.
+    * Top-Right: Muted Ochre "Admin" login button.
+    * Center: Logo + "Explore the Families of Andros over the Years" (in Soft Sand text).
+    * Search Bar: Centered, featuring a Slate Teal input field with a Muted Ochre search button.
+* **Bottom Half (Deep Ocean Teal Background):**
     * **Top Section:** "Explore" – Browse People, Events, Surnames, Churches, Places, and Sources via a structural table map.
-    * **Bottom Section:** "Visualize" – "See how Families moved in Real Time" with a large orange-yellow action button.
+    * **Bottom Section:** "Visualize" – "See how Families moved in Real Time" with a large Muted Ochre action button.
 
 ### Search / Explore Page Layout
-* **Top Section:** Transparent hero navigation, "Search Results" text, and the main search bar.
-* **Bottom Section (Cyan Background):**
-    * **Left Column (Filters):** Dynamic filtering options based on the active entity tab.
+* **Top Section:** Transparent hero navigation, "Search Results" text, and the Slate Teal search bar.
+* **Bottom Section (Deep Ocean Teal Background):**
+    * **Left Column (Filters):** Dynamic filtering options. Headers in Muted Ash, values in Soft Sand.
     * **Right Column (Results):**
         * Total record count.
-        * 7 Navigation Tabs (People, Events, Surname, Surname Events, Churches, Places, Sources).
-        * Data table with sortable columns.
-        * **Pagination:** 30 records per page, dynamic ellipses (`< 1 2 3 ... 9 >`), and visually disabled arrows at boundaries.
+        * 7 Navigation Tabs.
+        * Data table with sortable columns (Slate Teal headers, Deep Ocean Teal rows).
+        * **Pagination:** 30 records per page, dynamic ellipses (`< 1 2 3 ... 9 >`), with Muted Ochre highlights for the active page.
+
+### Entity Detail Page (Dynamic Info View)
+A flexible, reusable layout utilized when clicking on any specific Person, Location, Church, or Source.
+* **Hero Navigation:** Standard transparent header.
+* **The Entity Information Box:**
+    * A centered, responsive CSS Grid card with a Slate Teal background and soft drop-shadow.
+    * **Header:** Large Soft Sand text displaying the primary identifier (e.g., "Nikolaos Polemis").
+    * **Data Grid:** Key-value pairs. The Field Name (e.g., *BIRTH YEAR*) is small, uppercase Muted Ash. The Value (e.g., *1855*) sits directly underneath in larger, bolder Soft Sand text.
+* **The Related Records Section (Handle Bar Tabs):**
+    * **Tab Strip:** A continuous horizontal bar resting below the info box.
+    * **Inactive Tabs:** Muted Ash text with a subtle bottom border.
+    * **Active Tab:** Muted Ochre text with a thick Muted Ochre bottom border directly connecting it to the content below.
+    * **Content Area:** A flat, borderless Deep Ocean Teal area rendering the related database records (e.g., Family Members, Census Records, Marriages) as lists or mini-cards.
 
 ### Visualize Page Layout
 * **Header:** Standard transparent hero navigation.
-* **Main Area:** Solid cyan background holding a large, fixed interactive OpenStreetMap of Andros.
-* **Bottom Controls (Timeline Slider):** A horizontal slider representing the database's available years (e.g., 1670 - 1925).
+* **Main Area:** Solid Deep Ocean Teal background holding a large, fixed interactive OpenStreetMap of Andros.
+* **Bottom Controls (Timeline Slider):** A horizontal slider representing the database's available years (e.g., 1670 - 1925). The slider track and thumb utilize the Muted Ochre accent.
 * **Interactivity:** Dragging the slider dynamically updates the map to show population counts in specific villages/churches for that exact year.
 
 ---
 
 ## 💻 2. Frontend Architecture (React SPA)
 
-* **Framework & Routing:** React.js configured as a Single-Page Application using **React Router** for seamless, instant page transitions without browser reloads.
+* **Framework & Routing:** React.js configured as a Single-Page Application using **React Router** for seamless, instant page transitions.
 * **State Management:** Utilizes React Context API (or Zustand) to manage complex cross-component state, specifically for map filters, timeline slider positions, and search result pagination.
-* **Styling:** Component-scoped CSS to maintain modular design without global conflicts.
+* **Styling:** Component-scoped CSS mapping to the Deep Aegean color palette to maintain modular design without global conflicts.
 * **Data Fetching & Mapping:**
-    * Asynchronous communication with the Spring Boot REST API.
+    * Asynchronous communication with the Spring Boot REST API via flattened DTOs.
     * **Visualize View:** Consumes a highly optimized, pre-aggregated JSON payload containing the entire timeline data, allowing the map slider to update instantly without network lag.
 
 ---
