@@ -10,7 +10,6 @@
 .visualize-container .hero-nav {
     background: rgba(27, 54, 93, 0.9); /* #1B365D with 90% opacity */
     position: relative;
-    padding: 15px 40px;
 }
 
 .map-area {
