@@ -16,6 +16,11 @@ body {
   color: var(--text-light);
 }
 
+/* Add this new block to force buttons and inputs to use the global font */
+input, button, select, textarea {
+  font-family: inherit;
+}
+
 /* Reusable Buttons */
 .btn-accent {
   background-color: var(--accent-orange);
