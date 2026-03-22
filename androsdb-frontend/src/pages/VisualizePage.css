@@ -17,8 +17,6 @@
     flex: 1; /* Takes up all remaining space */
     position: relative;
     width: 100%;
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
 }
 
 /* Timeline Controls Footer */
@@ -45,7 +43,7 @@
 .slider-container label {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--text-light); /* Update text to light */
+    color: var(--accent-orange);
 }
 
 .year-slider {

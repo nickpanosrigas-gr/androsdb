@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { useStore } from '../store';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './VisualizePage.css';
 
 const VisualizePage = () => {
     const { timelineYear, setTimelineYear } = useStore();
 
+    useEffect(() => {
+        setTimelineYear(1670); // Forces the slider to your minimum value on load
+    }, [setTimelineYear]);
+
+    const androsBounds = [
+        [37.69, 24.68], // Bottom-Left corner
+        [38.00, 25.10]  // Top-Right corner
+    ];
+
     return (
         <div className="visualize-container">
             <Navbar />
-
             <main className="map-area">
-                <MapContainer center={[37.8333, 24.9333]} zoom={12} style={{ height: '100%', width: '100%' }}>
+                <MapContainer
+                    bounds={androsBounds}
+                    maxBounds={androsBounds}
+                    maxBoundsViscosity={1.0}
+                    style={{ height: '100%', width: '100%' }}
+                >
+                    {/* Clean Base Layer: Esri Satellite Imagery Only */}
                     <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; OpenStreetMap contributors'
+                        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                        attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
                     />
-                    {/* Example Marker - You will map your Cache payload here based on timelineYear */}
-                    <Marker position={[37.8541, 24.9124]}>
-                        <Popup>Apoikia Population in {timelineYear}: 150</Popup>
-                    </Marker>
                 </MapContainer>
             </main>
 
