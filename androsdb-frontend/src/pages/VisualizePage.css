@@ -1,0 +1,85 @@
+.visualize-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main-bg);
+}
+
+/* Make the navbar background match the dark theme */
+.visualize-container .hero-nav {
+    background: rgba(27, 54, 93, 0.9); /* #1B365D with 90% opacity */
+    position: relative;
+    padding: 15px 40px;
+}
+
+.map-area {
+    flex: 1; /* Takes up all remaining space */
+    position: relative;
+    width: 100%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+/* Timeline Controls Footer */
+.timeline-controls {
+    height: 100px;
+    background-color: var(--surface-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.slider-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider-container label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light); /* Update text to light */
+}
+
+.year-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 8px;
+    background: var(--main-bg);
+    outline: none;
+    border-radius: 5px;
+}
+
+/* Customizing the slider thumb */
+.year-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--accent-orange);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+}
+
+.year-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--accent-orange-hover);
+}
+
+.year-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--accent-orange);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}

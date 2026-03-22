@@ -1,0 +1,168 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Top Half: Image Background */
+.landing-top {
+    height: 50vh;
+    /* Placeholder image gradient - replace url() with your actual Aegean background image */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 40px; /* offset for hero-nav */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 22px 30px;
+    font-size: 1.65rem;
+    width: 600px;
+    background-color: var(--surface-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 35px; /* Scaled up to keep it pill-shaped */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: #a0aec0;
+}
+
+.search-bar button {
+    border-radius: 35px;
+    padding: 0 45px;      /* Increased padding */
+    font-size: 1.65rem;   /* Matched to input size */
+}
+
+/* --- Section 1: Explore Stacked Layout --- */
+.explore-vertical-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 60px; /* Space between Explore and Visualize bands */
+}
+
+/* Headers for both Explore and Visualize sections */
+.section-header, .visualize-text {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.section-header h2, .visualize-text h2 {
+    color: var(--text-light);
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+}
+
+.section-header p, .visualize-text p {
+    color: #a0aec0;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* Explore Menu Card - Now taking full width of the 800px container */
+.explore-menu-card {
+    background-color: var(--surface-bg);
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.explore-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; /* Slightly wider padding for the broader card */
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.explore-menu-item:last-child {
+    border-bottom: none;
+}
+
+.explore-menu-item:hover {
+    background-color: var(--surface-bg-hover);
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.item-left svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-orange);
+}
+
+.item-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+}
+
+.item-right .count {
+    color: #a0aec0;
+}
+
+.item-right .chevron {
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+/* --- Section 2: Visualize Map Band --- */
+.visualize-band {
+    background-color: var(--surface-bg);
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.visualize-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px; /* Match the width of the Explore section exactly */
+    width: 100%;
+    padding: 0 20px;
+}
+
+.btn-accent.large {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border-radius: 30px;
+}

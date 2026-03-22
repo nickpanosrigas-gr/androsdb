@@ -1,0 +1,62 @@
+:root {
+  --main-bg: #1B365D;           /* Deep Blue Main Background */
+  --surface-bg: #274775;        /* Box/Card Background (Change this!) */
+  --surface-bg-hover: #32558a;  /* Slightly lighter for hover states */
+  --accent-orange: #faa111;
+  --accent-orange-hover: #e58f0c;
+  --text-light: #f0f4f8;
+  --text-dark: #333333;
+  --border-color: rgba(255, 255, 255, 0.15); /* Subtle lines for dark theme */
+}
+
+body {
+  margin: 0;
+  font-family: 'Georgia', serif; /* Changed globally to the elegant serif font */
+  background-color: var(--main-bg);
+  color: var(--text-light);
+}
+
+/* Reusable Buttons */
+.btn-accent {
+  background-color: var(--accent-orange);
+  color: var(--text-dark);
+  border: none;
+  padding: 15px 30px; /* Increased padding */
+  font-size: 1.5rem;  /* Added explicitly larger font */
+  font-weight: bold;
+  border-radius: 8px; /* Slightly rounder to match the bigger size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-orange-hover);
+}
+
+/* Transparent Hero Navigation */
+.hero-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Make Logo match the buttons */
+.hero-nav .logo {
+  color: var(--accent-orange);
+  font-size: 2.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.hero-nav .btn-accent {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
