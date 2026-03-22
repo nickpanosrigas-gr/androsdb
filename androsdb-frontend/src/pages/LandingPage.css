@@ -34,6 +34,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 2.5rem;
 }
 
 .search-bar input {
@@ -66,8 +67,7 @@
     align-items: flex-start;     /* Keeps items aligned at the top */
     max-width: 950px;            /* Calibrated to fit 400px text + 450px table */
     width: 100%;
-    margin: 60px auto 80px auto; /* 60px top margin keeps table away from hero image */
-    padding: 0 20px;
+    margin: 2rem auto 2rem auto; /* 60px top margin keeps table away from hero image */
 }
 
 /* Headers for both Explore and Visualize sections */
@@ -106,10 +106,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 25px;
     border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     transition: background-color 0.2s ease;
+    padding: 0.8rem 25px;
 }
 
 .explore-menu-item:last-child {
