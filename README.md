@@ -25,36 +25,36 @@ The application features a localized, eye-friendly dark theme designed for heavy
 ### Landing Page Layout
 The home page features a horizontal split background:
 * **Top Half (Image Background):** * Transparent hero navigation.
-    * Top-Left: Muted AndrosDB logo.
-    * Top-Right: Muted Ochre "Admin" login button.
-    * Center: Logo + "Explore the Families of Andros over the Years" (in Soft Sand text).
-    * Search Bar: Centered, featuring a Slate Teal input field with a Muted Ochre search button.
+  * Top-Left: Muted AndrosDB logo.
+  * Top-Right: Muted Ochre "Admin" login button.
+  * Center: Logo + "Explore the Families of Andros over the Years" (in Soft Sand text).
+  * Search Bar: Centered, featuring a Slate Teal input field with a Muted Ochre search button.
 * **Bottom Half (Deep Ocean Teal Background):**
-    * **Top Section:** "Explore" – Browse People, Events, Surnames, Churches, Places, and Sources via a structural table map.
-    * **Bottom Section:** "Visualize" – "See how Families moved in Real Time" with a large Muted Ochre action button.
+  * **Top Section:** "Explore" – Browse People, Events, Surnames, Churches, Places, and Sources via a structural table map.
+  * **Bottom Section:** "Visualize" – "See how Families moved in Real Time" with a large Muted Ochre action button.
 
 ### Search / Explore Page Layout
 * **Top Section:** Transparent hero navigation, "Search Results" text, and the Slate Teal search bar.
 * **Bottom Section (Deep Ocean Teal Background):**
-    * **Left Column (Filters):** Dynamic filtering options. Headers in Muted Ash, values in Soft Sand.
-    * **Right Column (Results):**
-        * Total record count.
-        * 7 Navigation Tabs.
-        * Data table with sortable columns (Slate Teal headers, Deep Ocean Teal rows).
-        * **Pagination:** 30 records per page, dynamic ellipses (`< 1 2 3 ... 9 >`), with Muted Ochre highlights for the active page.
+  * **Left Column (Filters):** Dynamic filtering options. Headers in Muted Ash, values in Soft Sand.
+  * **Right Column (Results):**
+    * Total record count.
+    * 7 Navigation Tabs.
+    * Data table with sortable columns (Slate Teal headers, Deep Ocean Teal rows).
+    * **Pagination:** 30 records per page, dynamic ellipses (`< 1 2 3 ... 9 >`), with Muted Ochre highlights for the active page.
 
 ### Entity Detail Page (Dynamic Info View)
 A flexible, reusable layout utilized when clicking on any specific Person, Location, Church, or Source.
 * **Hero Navigation:** Standard transparent header.
 * **The Entity Information Box:**
-    * A centered, responsive CSS Grid card with a Slate Teal background and soft drop-shadow.
-    * **Header:** Large Soft Sand text displaying the primary identifier (e.g., "Nikolaos Polemis").
-    * **Data Grid:** Key-value pairs. The Field Name (e.g., *BIRTH YEAR*) is small, uppercase Muted Ash. The Value (e.g., *1855*) sits directly underneath in larger, bolder Soft Sand text.
+  * A centered, responsive CSS Grid card with a Slate Teal background and soft drop-shadow.
+  * **Header:** Large Soft Sand text displaying the primary identifier (e.g., "Nikolaos Polemis").
+  * **Data Grid:** Key-value pairs. The Field Name (e.g., *BIRTH YEAR*) is small, uppercase Muted Ash. The Value (e.g., *1855*) sits directly underneath in larger, bolder Soft Sand text.
 * **The Related Records Section (Handle Bar Tabs):**
-    * **Tab Strip:** A continuous horizontal bar resting below the info box.
-    * **Inactive Tabs:** Muted Ash text with a subtle bottom border.
-    * **Active Tab:** Muted Ochre text with a thick Muted Ochre bottom border directly connecting it to the content below.
-    * **Content Area:** A flat, borderless Deep Ocean Teal area rendering the related database records (e.g., Family Members, Census Records, Marriages) as lists or mini-cards.
+  * **Tab Strip:** A continuous horizontal bar resting below the info box.
+  * **Inactive Tabs:** Muted Ash text with a subtle bottom border.
+  * **Active Tab:** Muted Ochre text with a thick Muted Ochre bottom border directly connecting it to the content below.
+  * **Content Area:** A flat, borderless Deep Ocean Teal area rendering the related database records (e.g., Family Members, Census Records, Marriages) as lists or mini-cards.
 
 ### Visualize Page Layout
 * **Header:** Standard transparent hero navigation.
@@ -70,8 +70,8 @@ A flexible, reusable layout utilized when clicking on any specific Person, Locat
 * **State Management:** Utilizes React Context API (or Zustand) to manage complex cross-component state, specifically for map filters, timeline slider positions, and search result pagination.
 * **Styling:** Component-scoped CSS mapping to the Deep Aegean color palette to maintain modular design without global conflicts.
 * **Data Fetching & Mapping:**
-    * Asynchronous communication with the Spring Boot REST API via flattened DTOs.
-    * **Visualize View:** Consumes a highly optimized, pre-aggregated JSON payload containing the entire timeline data, allowing the map slider to update instantly without network lag.
+  * Asynchronous communication with the Spring Boot REST API via flattened DTOs.
+  * **Visualize View:** Consumes a highly optimized, pre-aggregated JSON payload containing the entire timeline data, allowing the map slider to update instantly without network lag.
 
 ---
 
@@ -81,8 +81,9 @@ The backend acts as a robust RESTful API providing dynamic pagination and high-s
 
 * **Search & Explore API:** Utilizes Spring Data JPA `Pageable` and Criteria API (Specifications) to handle complex, dynamic queries (e.g., `/api/v1/persons?keyword=Polemis&page=0&size=30`), returning flattened DTOs to avoid N+1 query problems and infinite recursion.
 * **Visualization API & Caching:** The heavy timeline aggregation (calculating populations per year/village) is computed by a `VisualizationService` and cached in RAM using **Caffeine Cache**.
-    * A `CacheWarmer` triggers on application startup to pre-build the dataset.
-    * `@CacheEvict` is used on Admin update methods to instantly flush and rebuild the cache if historical data is modified.
+  * A `CacheWarmer` triggers on application startup to pre-build the dataset.
+  * `@CacheEvict` is used on Admin update methods to instantly flush and rebuild the cache if historical data is modified.
+* **JPA Auditing:** Integrated Spring Data JPA Auditing (`@EnableJpaAuditing`) to automatically manage `created_at` and `updated_at` lifecycle events for all major entities.
 * **API Documentation:** Integrated with **Springdoc OpenAPI (Swagger)** for auto-generated, interactive API documentation.
 * **Testing:** Automated testing suite utilizing **JUnit 5**, **Mockito**, and **Testcontainers** for disposable PostgreSQL integration tests.
 
@@ -105,6 +106,15 @@ The backend acts as a robust RESTful API providing dynamic pagination and high-s
 * **Surname:** `@OneToMany` (SurnameHistory, Persons).
 * **Person:** `@ManyToOne` (Surname, Father), `@OneToMany` (EventParticipation).
 * **Event:** `@ManyToOne` (Location, Church, Source), `@OneToMany` (EventParticipation).
+
+### JPA Auditing & Base Entity
+To mirror the database schema's audit columns (`created_at`, `updated_at`), all main entities extend a `BaseEntity` annotated with `@MappedSuperclass` and `@EntityListeners(AuditingEntityListener.class)`. Spring Data JPA Auditing automatically populates these timestamps on creation and modification.
+
+### Safe Lombok Configuration for JPA
+To prevent infinite recursion (StackOverflow errors) and unintended N+1 database queries during lazy loading, we strictly avoid Lombok's `@Data` annotation on JPA entities. Instead, we use:
+* `@Getter`, `@Setter`, and `@ToString`
+* `@ToString.Exclude` on all relational fields (`@ManyToOne`, `@OneToMany`).
+* Custom, JPA-optimized `equals()` and `hashCode()` methods that rely strictly on the database primary key and handle Hibernate Proxies correctly.
 
 ---
 
